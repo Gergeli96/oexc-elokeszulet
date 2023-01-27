@@ -1,1 +1,62 @@
 /* You can add global styles to this file, and also import other style files */
+
+// $kendo-grid-bg: #38ff00;
+// Variables.
+$primary: blue;
+$secondary: pink;// Import the theme file for the components you use.
+// @import "~@progress/kendo-theme-default/scss/panelbar/_index.scss";
+// @import "/src/node_modules/@progress/kendo-theme-default/scss/panelbar/_index.scss"
+// @import "/src/node_modules/@progress/kendo-theme-default/scss/grid/_index.scss";// Alternatively, include all components.
+@import "node_modules/@progress/kendo-theme-default/dist/all.scss";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+// @import "~@progress/kendo-theme-default/scss/dist/all.scss";
+
+body {
+    margin: 0;
+}
+
+kendo-grid {
+
+    kendo-grid-filter-wrapper-cell {
+        kendo-grid-filter-cell-operators {
+            display: none !important;
+        }
+    }
+
+    table {
+        thead {
+            tr {
+                th {
+                    background-color: #bbb !important;
+                    padding: 4px 5px !important;
+                    
+                    .k-cell-inner span {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+
+    kendo-grid-list {
+        table {
+            tbody {
+                tr {
+                    td {
+                        border-right: 1px solid #f8f8f8 !important;
+                        padding: 4px 5px !important;
+                        font-size: 12px;
+                    }
+                    
+                    &.k-selected {
+                        td {
+                            background-color: #cdc !important;
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

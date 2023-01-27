@@ -1,0 +1,19 @@
+.app-container {
+    flex-direction: column;
+    overflow: auto;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+
+    .nav {
+        background: url('../../src/assets/fejlec.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        height: 5rem;
+        width: 100%;
+    }
+
+    .content {
+        padding: 0 1rem;
+    }
+}

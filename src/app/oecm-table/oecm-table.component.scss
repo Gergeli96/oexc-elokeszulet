@@ -1,0 +1,48 @@
+.kendo-table-container {
+    .table-header, .table-footer {
+        justify-content: space-between;
+        align-items: center;
+        display: flex;
+        background-color: #999;
+        // padding: 8px 5px 0 30px;
+        padding-left: 0.5rem;
+        font-size: 13px;
+        color: #fff;
+        height: 28px;
+
+        .table-title {
+            font-size: 1rem;
+        }
+    }
+    
+    .table-header {
+        // justify-content: space-between;
+        // align-items: center;
+        // display: flex;
+
+        .actions {
+            display: flex;
+
+            .icon-container {
+                border-left: 1px solid #f8f8f8 !important;
+                padding: 0.2rem 0.4rem;
+                height: inherit;
+
+                i {
+                    font-size: 1.2rem;
+                    cursor: pointer;
+                }
+
+                &.search {
+                    align-items: center;
+                    display: flex;
+
+                    i {
+                        padding-right: 0.3rem;
+                    }
+                }
+            }
+        }
+    }
+}
+

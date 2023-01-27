@@ -1,0 +1,76 @@
+<div class="kendo-table-container">
+    <div class="table-header">
+        <div class="table-title">
+            <i class="bi bi-journal"></i>
+            {{tableName}}
+        </div>
+
+        <div class="actions">
+            <div class="icon-container">
+                <i class="bi bi-gear-fill"></i>
+            </div>
+            <div class="icon-container">
+                <i class="bi bi-filetype-csv"></i>
+            </div>
+            <div class="icon-container">
+                <i class="bi bi-file-earmark-excel" (click)="toExcel()"></i>
+            </div>
+            <div class="icon-container">
+                <i class="bi bi-funnel-fill" (click)="filterToggle()"></i>
+            </div>
+            <div class="icon-container search">
+                <i class="bi bi-search"></i>
+                <input type="text" (input)="onFilter($event)">
+            </div>
+
+            <!-- <button (click)="toggleColumn()">Toggle column</button>
+            <input type="text" [(ngModel)]="pageSize"> -->
+        </div>
+    </div>
+    
+    <div>
+        <kendo-grid
+            [kendoGridSelectBy]="kendoGridSelectBy"
+            [kendoGridBinding]="gridViewData"
+            [data]="originalData"
+            [pageSize]="pageSize"
+            [filterable]="filterable"
+            [pageable]="{type: 'input'}"
+            [sortable]="true"
+            [height]="300"
+            [skip]="skip"
+        >
+        <!-- [pagerItemsPerPage]="'Oldal'"
+        [pagerItems]="'custom items text'"
+        [pagerOf]="'custom of text'" -->
+        <kendo-grid-messages
+            pagerItems="elem"
+            pagerOf="összesen"
+            pagerPage="oldal"
+        ></kendo-grid-messages>
+
+            <kendo-grid-excel fileName="Products.xlsx"[fetchData]="fetchExcelData"></kendo-grid-excel>
+
+            <ng-container *ngFor="let col of grigColumns">
+                <kendo-grid-column [hidden]="col.hidden" [field]="col.name" [title]="col.title" [width]="220"></kendo-grid-column>
+            </ng-container>
+
+            <!-- <ng-template
+                kendoPagerTemplate
+                let-totalPages="totalPages"
+                let-currentPage="currentPage"
+                #pageinfo
+            >
+                <kendo-pager-info></kendo-pager-info>
+                <kendo-pager-prev-buttons></kendo-pager-prev-buttons>
+                <kendo-pager-numeric-buttons [buttonCount]="3"></kendo-pager-numeric-buttons>
+                <kendo-pager-next-buttons></kendo-pager-next-buttons>
+                <kendo-pager-input></kendo-pager-input>
+            </ng-template> -->
+        </kendo-grid>
+    </div>
+
+    <div class="table-footer">
+        Tételek száma {{gridViewData?.length || 0}}
+    </div>
+</div>
