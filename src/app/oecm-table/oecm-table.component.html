@@ -7,7 +7,7 @@
 
         <div class="actions">
             <div class="icon-container">
-                <i class="bi bi-gear-fill"></i>
+                <i class="bi bi-gear-fill" (click)="showSettingsModal()"></i>
             </div>
             <div class="icon-container">
                 <i class="bi bi-filetype-csv"></i>
@@ -71,6 +71,31 @@
     </div>
 
     <div class="table-footer">
-        Tételek száma {{gridViewData?.length || 0}}
+        Tételek száma {{gridViewData.length || 0}}
+    </div>
+</div>
+
+<div class="settings-modal-container" *ngIf="settingsModalIsVisible">
+    <div class="settings-modal">
+        <div class="setting-modal-header">
+            Beállítások
+        </div>
+
+        <div class="settings-modal-body">
+            <div class="setting-input-container" *ngFor="let col of settingsModalFields">
+                <label>{{col.name}}</label>
+                <input type="checkbox" [(ngModel)]="col.value">
+            </div>
+            
+            <div class="setting-input-container">
+                <label>Megjelenített sorok</label>
+                <input type="number" [(ngModel)]="settingsPageSize">
+            </div>
+        </div>
+
+        <div class="settings-modal-footer">
+            <button (click)="hideSettingsModal(false)">Mégsem</button>
+            <button (click)="hideSettingsModal(true)">Mentés</button>
+        </div>
     </div>
 </div>

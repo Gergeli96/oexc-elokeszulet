@@ -1,4 +1,4 @@
-import { IKendoColumn } from './oecm-table/oecm-table.component';
+import { IKendoColumn, KendoColumnType } from './oecm-table/oecm-table.component';
 import { Component } from '@angular/core';
 
 @Component({
@@ -10,7 +10,7 @@ export class AppComponent {
     public columns: IKendoColumn[] = [
         {title: 'Kód', name: 'code', hidden: false},
         {title: 'Megnevezés', name: 'name', hidden: false},
-        {title: 'Érvényesség', name: 'validity', type: 'bool', hidden: false},
+        {title: 'Érvényesség', name: 'validity', type: KendoColumnType.bool, hidden: false},
     ]
     public data = new Array(20).fill(0).map((_, i) => {
         return {
