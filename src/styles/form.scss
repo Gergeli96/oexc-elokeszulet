@@ -1,0 +1,30 @@
+@import './variables.scss';
+
+input {
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    padding: $input-padding;
+    height: $input-height;
+
+    &.icon-left {
+        border-bottom-left-radius: unset;
+        border-top-left-radius: unset;
+        border-left: unset;
+    }
+
+    &:focus {
+        outline: 1px solid $green;
+        border-color: #fff;
+    }
+}
+
+i.input-right {
+    padding: $input-padding $input-padding $input-padding 0.75rem;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    border-bottom-right-radius: unset;
+    border-top-right-radius: unset;
+    height: $input-height;
+    border-right: unset;
+    color: $green;
+}

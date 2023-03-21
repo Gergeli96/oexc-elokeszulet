@@ -1,0 +1,23 @@
+<nav>
+    <div class="nav-left">
+        <div *ngFor="let link of links" class="link">
+            {{link.name}}
+        </div>
+        <!-- <div class="link-group">
+            <div class="group-name" (click)="toggleSubLinks(sublinks)">Irányítószám</div>
+
+            <div class="sub-links" #sublinks>
+                <div class="link" routerLink="/" (click)="close(sublinks)">Irányítószám jelleg táblázat</div>
+                <div class="link" routerLink="/createirszam" (click)="close(sublinks)">Irányítószám jelleg létrehozás</div>
+            </div>
+        </div> -->
+    </div>
+
+    <div class="nav-right">
+        <i class="bi bi-info-circle"></i>
+        
+        <div class="logo-container">
+            <img src="/assets/oecm-logo.svg" alt="logo">
+        </div>
+    </div>
+</nav>

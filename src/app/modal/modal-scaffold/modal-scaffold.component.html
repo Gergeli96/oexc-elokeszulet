@@ -1,0 +1,18 @@
+<div class="modal">
+    <div class="modal-header">
+        <div class="title">{{headertitle}}</div>
+
+        <div class="actions">
+            <i class="bi bi-info-circle-fill"></i>
+            <i class="bi bi-x-circle-fill" (click)="onClose.emit()"></i>
+        </div>
+    </div>
+
+    <div class="modal-body">
+        <ng-content select="[body]"></ng-content>
+    </div>
+
+    <div class="modal-footer">
+        <ng-content select="[footer]"></ng-content>
+    </div>
+</div>

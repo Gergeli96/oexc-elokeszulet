@@ -1,0 +1,47 @@
+@import '../../styles/variables.scss';
+
+$navbar-height: 4rem;
+
+nav {
+    justify-content: space-between;
+    background-color: $green;
+    height: $navbar-height;
+    display: flex;
+    width: 100vw;
+
+    .nav-left {
+        display: flex;
+
+        .link {
+            justify-content: center;
+            text-decoration: none;
+            align-items: center;
+            padding: 0 1rem;
+            cursor: pointer;
+            height: inherit;
+            display: flex;
+            color: $white;
+        }
+    }
+
+    .nav-right {
+        height: inherit;
+        display: flex;
+
+        .bi-info-circle {
+            justify-content: center;
+            aspect-ratio: 1 / 1;
+            align-items: center;
+            font-size: 1.5rem;
+            height: inherit;
+            display: flex;
+            color: $white;
+        }
+
+        .logo-container {
+            background-color: $white;
+            padding: 0.5rem 1rem;
+            height: inherit;
+        }
+    }
+}

@@ -1,0 +1,26 @@
+@import '../../styles/variables.scss';
+
+footer {
+    border-top: 1px solid $border-color;
+    justify-content: space-between;
+    padding: 1rem 0;
+    width: inherit;
+    display: flex;
+
+    .foot-left, .foot-right {
+        font-size: 0.9rem;
+        color: $grey-text;
+        font-weight: 200;
+        display: flex;
+
+        span {
+            font-weight: 200;
+        }
+    }
+
+    .foot-right i {
+        padding-right: 0.5rem;
+        font-size: 1rem;
+        color: $green;
+    }
+}

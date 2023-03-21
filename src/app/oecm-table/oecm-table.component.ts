@@ -1,6 +1,7 @@
 import { Component, HostListener, Input, ViewChild } from '@angular/core';
-import { GridComponent } from '@progress/kendo-angular-grid';
+import { GridComponent, GridDataResult } from '@progress/kendo-angular-grid';
 import { process } from "@progress/kendo-data-query";
+import { OecmGridData } from './oecm-grid-data';
 
 export enum KendoColumnType {
     string = 'string',
@@ -8,8 +9,8 @@ export enum KendoColumnType {
     bool = 'bool'
 }
 
-export interface IKendoColumn {
-    name: string
+export interface IKendoColumn<T> {
+    name: keyof T
     title: string
     type?: KendoColumnType
     hidden: boolean
@@ -26,10 +27,10 @@ class KendoColumn {
     public title: string
     public name: string
 
-    constructor(config: IKendoColumn, localConfig: IKendoTableLocalConfig) {
+    constructor(config: IKendoColumn<any>, localConfig: IKendoTableLocalConfig) {
         this.title = config.title
-        this.name = config.name
-        this.hidden = localConfig[config.name] ?? config.hidden ?? false
+        this.name = config.name as string
+        this.hidden = localConfig[config.name as string] ?? config.hidden ?? false
         this.type = config.type ?? KendoColumnType.string
     }
 }
@@ -39,7 +40,7 @@ class KendoColumn {
     templateUrl: './oecm-table.component.html',
     styleUrls: ['./oecm-table.component.scss']
 })
-export class OecmTableComponent {
+export class OecmTableComponent<T> {
     @ViewChild(GridComponent, {static: true}) gridComponent: GridComponent
     public settingsModalFields: {name: string, value: boolean}[] = [ ]
     private localConfig: IKendoTableLocalConfig = { }
@@ -49,17 +50,23 @@ export class OecmTableComponent {
     public kendoGridSelectBy: string = 'id'
     public settingsPageSize: number = 8
     public filterable: boolean = false
-    public originalData: any[] = [ ]
     public gridViewData: any[] = [ ]
     private tableId: string = ''
     public pageSize: number = 8
     public skip: number = 0
+    
+    // public originalData: any[] = [ ]
+    originalData: OecmGridData = new OecmGridData(8)
 
     constructor() { }
 
     ngOnDestroy(): void {
         this.onAppUnload()
     }
+
+    ngAfterViewInit(): void {
+    }
+
 
     @HostListener('window:unload')
     public onAppUnload(): void {
@@ -70,16 +77,16 @@ export class OecmTableComponent {
         }
     }
 
-
     @Input('columns')
-    public set tableColumns(value: IKendoColumn[]) {
+    public set tableColumns(value: IKendoColumn<T>[]) {
         this.grigColumns = value.map(x => new KendoColumn(x, this.localConfig))
     }
 
     @Input('data')
     public set tableData(value: any[]) {
         this.gridViewData = value
-        this.originalData = value
+        // this.originalData = value
+        this.originalData.setData(value)
     }
 
     @Input('kendoGridSelectBy')
@@ -100,6 +107,19 @@ export class OecmTableComponent {
 
         this.localConfig.PAGESIZE = this.pageSize
 
+    }
+
+    public get activeRow(): T | null {
+        const activeRow = (this.gridComponent.wrapper.nativeElement as HTMLElement)
+            .querySelector('tbody tr.k-selected')
+
+        if (activeRow && activeRow?.hasAttribute('ng-reflect-data-row-index')) {
+            // return this.originalData[parseInt(activeRow.getAttribute('ng-reflect-data-row-index') as any)] ?? null
+            return this.originalData.gridData.data[parseInt(activeRow.getAttribute('ng-reflect-data-row-index') as any)] ?? null
+        }
+        else {
+            return null
+        }
     }
 
     public toExcel(): void {
@@ -138,7 +158,8 @@ export class OecmTableComponent {
 
     public onFilter(event: Event): void {
         let inputValue = (event.target as HTMLInputElement).value
-        this.gridViewData = process(this.originalData, {
+        // this.gridViewData = process(this.originalData, {
+        this.gridViewData = process(this.originalData.gridData.data, {
             filter: {
                 logic: "or",
                 filters: this.grigColumns.map((col) => {
@@ -159,5 +180,9 @@ export class OecmTableComponent {
         
             default: return 'contains'
         }
+    }
+
+    public focusTo(element: HTMLInputElement): void {
+        element.focus()
     }
 }

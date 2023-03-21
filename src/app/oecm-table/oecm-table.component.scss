@@ -1,47 +1,111 @@
+@import '../../styles/variables.scss';
+
 .kendo-table-container {
     .table-header, .table-footer {
         justify-content: space-between;
         align-items: center;
+        padding: 1rem 0;
         display: flex;
-        background-color: #999;
-        // padding: 8px 5px 0 30px;
-        padding-left: 0.5rem;
-        font-size: 13px;
-        color: #fff;
-        height: 28px;
 
         .table-title {
-            font-size: 1rem;
+            color: $dark-green;
+            font-size: 1.5rem;
         }
     }
     
     .table-header {
-        // justify-content: space-between;
-        // align-items: center;
-        // display: flex;
 
         .actions {
             display: flex;
 
             .icon-container {
-                border-left: 1px solid #f8f8f8 !important;
-                padding: 0.2rem 0.4rem;
-                height: inherit;
+                border: 1px solid $border-color;
+                border-radius: $border-radius;
+                background-color: inherit;
+                // aspect-ratio: 1 / 1;
+                padding: 0.5rem;
+                margin-right: 0.5rem;
+
+                &:last-child {
+                    margin-right: unset;
+                }
 
                 i {
-                    font-size: 1.2rem;
+                    font-size: 1.4rem;
                     cursor: pointer;
-                }
-
-                &.search {
-                    align-items: center;
-                    display: flex;
-
-                    i {
-                        padding-right: 0.3rem;
-                    }
+                    color: $green;
                 }
             }
+
+            input {
+                background-image: url('../../assets/magnifying-glass.png');
+                background-position: 0.5rem center;
+                background-size: 1.2rem 1.2rem;
+                background-repeat: no-repeat;
+                padding-left: 2rem;
+            }
+        }
+    }
+
+    .pager {
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+        display: flex;
+    
+        .actions {
+            display: flex;
+    
+            input {
+                background-color: #f8f8f8;
+                color: $grey-text;
+                width: 2rem;
+    
+                &.left, &.middle {
+                    border-bottom-right-radius: unset;
+                    border-top-right-radius: unset;
+                    border-right: unset;
+                    text-align: end;
+                }
+    
+                &.right, &.middle {
+                    border-bottom-left-radius: unset;
+                    border-top-left-radius: unset;
+                    border-left: unset;
+                }
+    
+                &.middle {
+                    padding-right: unset;
+                    padding-left: unset;
+                    text-align: center;
+                    width: 0.5rem;
+                }
+            }
+    
+            button {
+                border: 1px solid $border-color;
+                background-color: $white;
+                padding: $input-padding;
+                justify-content: center;
+                margin-right: 0.25rem;
+                align-items: center;
+                display: flex;
+                color: $green;
+                
+                i {
+                    font-size: 1.5rem;
+                    padding: 0 0.5rem;
+                }
+
+                &[disabled] {
+                    cursor: not-allowed;
+                    color: $grey-text;
+                }
+            }
+        }
+    
+        .items-number {
+            color: $grey-text;
         }
     }
 }

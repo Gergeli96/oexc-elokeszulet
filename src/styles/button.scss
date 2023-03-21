@@ -1,0 +1,33 @@
+@import './variables.scss';
+
+button {
+    border-radius: 0.25rem;
+    padding: 0.75rem 2rem;
+    cursor: pointer;
+    border: unset;
+    color: $white;
+
+    i {
+        padding-right: 0.5rem;
+    }
+
+    &.green {
+        background-color: $green;
+        color: $white;
+    }
+}
+
+.button-container {
+    background-color: #dfdfdf;
+    border-radius: 0.25rem;
+    padding: 0.75rem;
+    display: flex;
+
+     button {
+        margin-right: 0.5rem;
+
+        &:last-child {
+            margin-right: unset;
+        }
+     }
+}

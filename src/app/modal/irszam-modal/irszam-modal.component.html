@@ -1,0 +1,10 @@
+<app-modal-scaffold headertitle="Irányítószám jelleg" (onClose)="close()">
+    <div body>
+        <app-irszam-jelleg-form [data]="editData"></app-irszam-jelleg-form>
+    </div>
+
+    <div class="d-flex justify-end" footer>
+        <button (click)="save()">Mentés</button>
+        <button (click)="close()">Mégsem</button>
+    </div>
+</app-modal-scaffold>

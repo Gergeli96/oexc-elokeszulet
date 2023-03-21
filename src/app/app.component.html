@@ -1,8 +1,13 @@
 <div class="app-container">
-    <div class="nav"></div>
+    <app-navbar></app-navbar>
     
     <div class="content">
-        <app-oecm-table tableid="teszttable" tablename="Irányítószám jellegek listája" [columns]="columns" [data]="data"></app-oecm-table>
+        <router-outlet></router-outlet>
+    </div>
+    
+    <div class="footer-container">
+        <app-footer></app-footer>
     </div>
 </div>
     
+<div id="modal-anchor"></div>

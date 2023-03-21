@@ -7,56 +7,135 @@ $secondary: pink;// Import the theme file for the components you use.
 // @import "~@progress/kendo-theme-default/scss/panelbar/_index.scss";
 // @import "/src/node_modules/@progress/kendo-theme-default/scss/panelbar/_index.scss"
 // @import "/src/node_modules/@progress/kendo-theme-default/scss/grid/_index.scss";// Alternatively, include all components.
-@import "node_modules/@progress/kendo-theme-default/dist/all.scss";
-@import "~bootstrap-icons/font/bootstrap-icons.css";
+@import 'node_modules/@progress/kendo-theme-default/dist/all.scss';
+@import '~bootstrap-icons/font/bootstrap-icons.css';
+
+@import './styles/variables.scss';
+@import './styles/spacing.scss';
+@import './styles/button.scss';
+@import './styles/common.scss';
+@import './styles/table.scss';
+@import './styles/icons.scss';
+@import './styles/form.scss';
+@import './styles/flex.scss';
 
 // @import "~@progress/kendo-theme-default/scss/dist/all.scss";
+
+@font-face {
+    font-family: 'my-font';
+    src: url('./assets/font/Roboto-Regular.ttf') format('truetype');
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'my-font';
+    src: url('./assets/font/Roboto-Black.ttf') format('truetype');
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'my-font';
+    src: url('./assets/font/Roboto-BlackItalic.ttf') format('truetype');
+    font-style: italic;
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'my-font';
+    src: url('./assets/font/Roboto-Bold.ttf') format('truetype');
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'my-font';
+    src: url('./assets/font/Roboto-BoldItalic.ttf') format('truetype');
+    font-style: italic;
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'my-font';
+    src: url('./assets/font/Roboto-Italic.ttf') format('truetype');
+    font-style: italic;
+}
+@font-face {
+    font-family: 'my-font';
+    src: url('./assets/font/Roboto-Light.ttf') format('truetype');
+    font-weight: 200;
+}
+@font-face {
+    font-family: 'my-font';
+    src: url('./assets/font/Roboto-LightItalic.ttf') format('truetype');
+    font-style: italic;
+    font-weight: 200;
+}
+@font-face {
+    font-family: 'my-font';
+    src: url('./assets/font/Roboto-Medium.ttf') format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'my-font';
+    src: url('./assets/font/Roboto-MediumItalic.ttf') format('truetype');
+    font-style: italic;
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'my-font';
+    src: url('./assets/font/Roboto-Thin.ttf') format('truetype');
+    font-weight: 100;
+}
+@font-face {
+    font-family: 'my-font';
+    src: url('./assets/font/Roboto-ThinItalic.ttf') format('truetype');
+    font-style: italic;
+    font-weight: 100;
+}
+
+* {
+    font-family: 'my-font', sans-serif;
+    // font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    line-height: 16px;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+*::-webkit-scrollbar {
+    width: 0.5em;
+}
+ 
+*::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px $grey;
+}
+ 
+*::-webkit-scrollbar-thumb {
+    outline: 1px solid $green;
+    background-color: $green;
+}
 
 body {
     margin: 0;
 }
 
-kendo-grid {
+.input-group {
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    display: flex;
 
-    kendo-grid-filter-wrapper-cell {
-        kendo-grid-filter-cell-operators {
-            display: none !important;
-        }
+    label {
+        font-weight: bold;
+        width: 30%;
     }
 
-    table {
-        thead {
-            tr {
-                th {
-                    background-color: #bbb !important;
-                    padding: 4px 5px !important;
-                    
-                    .k-cell-inner span {
-                        text-align: center;
-                    }
-                }
+    .input-container {
+        width: 70%;
+
+        input {
+            width: 100%;
+
+            &[type="checkbox"] {
+                width: unset;
             }
         }
     }
+}
 
-    kendo-grid-list {
-        table {
-            tbody {
-                tr {
-                    td {
-                        border-right: 1px solid #f8f8f8 !important;
-                        padding: 4px 5px !important;
-                        font-size: 12px;
-                    }
-                    
-                    &.k-selected {
-                        td {
-                            background-color: #cdc !important;
-                            font-size: 12px;
-                        }
-                    }
-                }
-            }
-        }
-    }
+i {
+    display: inline-block;
 }

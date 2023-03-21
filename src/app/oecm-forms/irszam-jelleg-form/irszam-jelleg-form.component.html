@@ -1,0 +1,29 @@
+<form [formGroup]="formGroup">
+    <div class="input-group">
+        <label>Kód</label>
+
+        <div class="input-container">
+            <input type="text" formControlName="code">
+        </div>
+    </div>
+
+    <div class="input-group">
+        <label>Név</label>
+
+        <div class="input-container">
+            <input type="text" formControlName="name">
+        </div>
+    </div>
+
+    <div class="input-group">
+        <label>Valid</label>
+
+        <div class="input-container">
+            <input type="checkbox" formControlName="validity">
+        </div>
+    </div>
+
+    <!-- <div class="buttons">
+        <button (click)="save()">Mentés</button>
+    </div> -->
+</form>

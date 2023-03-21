@@ -1,0 +1,57 @@
+@import '../styles/variables.scss';
+
+kendo-grid.k-grid {
+    border: unset;
+
+    .k-grid-header {
+        border: unset !important;
+    }
+
+    kendo-pager {
+        display: none;
+    }
+
+    kendo-grid-filter-wrapper-cell {
+        kendo-grid-filter-cell-operators {
+            display: none !important;
+        }
+    }
+
+    table.k-table {
+        thead.k-table-thead tr.k-table-row th.k-table-th,
+        tbody.k-grid-header tr.k-table-row td.k-table-td {
+            border: unset !important;
+            padding: 1rem !important;
+        }
+
+        thead.k-table-thead tr.k-table-row th.k-table-th {
+            border-right: 2px solid $white !important;
+            background-color: #f8f8f8;
+        }
+    }
+
+    kendo-grid-list {
+        table {
+            tbody {
+                tr {
+                    td.k-table-td {
+                        border: unset !important;
+                        border-bottom: 1px solid $border-color !important;
+                        padding: 1rem !important;
+                    }
+                    
+                    &.k-selected {
+                        td {
+                            background-color: #eefff3 !important;
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.k-grid {
+    height: 100%;
+}

@@ -1,0 +1,51 @@
+.modal {
+    background-color: #fff;
+    padding: 0.25rem;
+    min-width: 25rem;
+
+    .modal-header {
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.25rem;
+        display: flex;
+
+        .title {
+            font-size: 1.3rem;
+            color: #8f8f8f;
+        }
+
+        .actions {
+            align-items: center;
+            display: flex;
+            
+            i {
+                margin-right: 0.25rem;
+                font-size: 1.3rem;
+                color: #2fb351;
+
+                &:last-child {
+                    margin-right: unset;
+                }
+
+                &.bi-info-circle-fill {
+                    cursor: help;
+                }
+
+                &.bi-x-circle-fill {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .modal-body {
+        background-color: #eee;
+        padding: 0.25rem;
+    }
+
+    .modal-footer {
+        background-color: #d4d4d4;
+        padding: 0.25rem;
+        margin-top: 1rem;
+    }
+}

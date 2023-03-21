@@ -6,25 +6,15 @@
         </div>
 
         <div class="actions">
-            <div class="icon-container">
-                <i class="bi bi-gear-fill" (click)="showSettingsModal()"></i>
-            </div>
-            <div class="icon-container">
-                <i class="bi bi-filetype-csv"></i>
-            </div>
-            <div class="icon-container">
-                <i class="bi bi-file-earmark-excel" (click)="toExcel()"></i>
-            </div>
-            <div class="icon-container">
-                <i class="bi bi-funnel-fill" (click)="filterToggle()"></i>
-            </div>
-            <div class="icon-container search">
-                <i class="bi bi-search"></i>
-                <input type="text" (input)="onFilter($event)">
-            </div>
+            <i class="bi bi-gear-fill icon-box mr-2" (click)="showSettingsModal()"></i>
+            
+            <i class="bi bi-filetype-csv icon-box mr-2"></i>
 
-            <!-- <button (click)="toggleColumn()">Toggle column</button>
-            <input type="text" [(ngModel)]="pageSize"> -->
+            <i class="bi bi-file-earmark-excel icon-box mr-2" (click)="toExcel()"></i>
+
+            <i class="bi bi-funnel-fill icon-box mr-2" (click)="filterToggle()"></i>
+
+            <input type="text" (input)="onFilter($event)">
         </div>
     </div>
     
@@ -32,46 +22,37 @@
         <kendo-grid
             [kendoGridSelectBy]="kendoGridSelectBy"
             [kendoGridBinding]="gridViewData"
-            [data]="originalData"
+            [data]="originalData.gridData"
             [pageSize]="pageSize"
             [filterable]="filterable"
             [pageable]="{type: 'input'}"
             [sortable]="true"
-            [height]="300"
             [skip]="skip"
         >
-        <!-- [pagerItemsPerPage]="'Oldal'"
-        [pagerItems]="'custom items text'"
-        [pagerOf]="'custom of text'" -->
-        <kendo-grid-messages
-            pagerItems="elem"
-            pagerOf="összesen"
-            pagerPage="oldal"
-        ></kendo-grid-messages>
-
-            <kendo-grid-excel fileName="Products.xlsx"[fetchData]="fetchExcelData"></kendo-grid-excel>
+        <!-- [height]="700" -->
 
             <ng-container *ngFor="let col of grigColumns">
                 <kendo-grid-column [hidden]="col.hidden" [field]="col.name" [title]="col.title" [width]="220"></kendo-grid-column>
             </ng-container>
-
-            <!-- <ng-template
-                kendoPagerTemplate
-                let-totalPages="totalPages"
-                let-currentPage="currentPage"
-                #pageinfo
-            >
-                <kendo-pager-info></kendo-pager-info>
-                <kendo-pager-prev-buttons></kendo-pager-prev-buttons>
-                <kendo-pager-numeric-buttons [buttonCount]="3"></kendo-pager-numeric-buttons>
-                <kendo-pager-next-buttons></kendo-pager-next-buttons>
-                <kendo-pager-input></kendo-pager-input>
-            </ng-template> -->
         </kendo-grid>
     </div>
 
-    <div class="table-footer">
-        Tételek száma {{gridViewData.length || 0}}
+    <div class="pager">
+        <div class="actions">
+            <button (click)="originalData.toFirstPage()" [disabled]="originalData.currentPage < 2"><i class="icon-arrow-left-end"></i></button>
+            <button (click)="originalData.previousPage()" [disabled]="originalData.currentPage < 2"><i class="bi bi-arrow-left-short"></i></button>
+    
+            <div class="d-flex" (click)="focusTo(inp)">
+                <input type="text" class="left" [value]="originalData.currentPage" #inp>
+                <input type="text" class="middle" value="/" disabled>
+                <input type="text" class="right mr-1" [value]="originalData.pageCount" disabled>
+            </div>
+    
+            <button (click)="originalData.nextPage()" [disabled]="originalData.currentPage >= originalData.pageCount"><i class="bi bi-arrow-right-short"></i></button>
+            <button (click)="originalData.toLastPage()" [disabled]="originalData.currentPage >= originalData.pageCount"><i class="icon-arrow-left-end rotate-180"></i></button>
+        </div>
+    
+        <div class="items-number">Tételek száma: {{originalData.gridData.total}}</div>
     </div>
 </div>
 
