@@ -1,0 +1,39 @@
+@import '../../../styles/variables.scss';
+
+.user-role-input-container {
+    .input-container {
+        align-items: center;
+        position: relative;
+        display: flex;
+
+        input {
+            background-image: url('../../../assets/polygon-down.png');
+            background-position: calc(100% - 0.8rem) center;
+            background-size: 0.6em 0.6rem;
+            background-repeat: no-repeat;
+            padding-right: 2rem;
+        }
+    
+        button {
+            background-color: #1110;
+            padding: 1.2rem 1.2rem;
+            position: absolute;
+            right: 0;
+        }
+    }
+
+    .dropdown-container {
+        border: 1px solid #dfdfdf;
+        background-color: #fff;
+        border-radius: 0.25rem;
+        max-width: 28rem;
+        position: fixed;
+        padding: 0.5rem;
+        display: none;
+        z-index: 9;
+        
+        &.show {
+            display: block;    
+        }
+    }
+}

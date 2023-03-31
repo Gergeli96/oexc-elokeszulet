@@ -1,5 +1,11 @@
 @import '../styles/variables.scss';
 
+app-oecm-table {
+    .kendo-table-container {
+        width: -webkit-fill-available;
+    }
+}
+
 kendo-grid.k-grid {
     border: unset;
 
@@ -43,7 +49,6 @@ kendo-grid.k-grid {
                     &.k-selected {
                         td {
                             background-color: #eefff3 !important;
-                            font-size: 12px;
                         }
                     }
                 }
@@ -54,4 +59,31 @@ kendo-grid.k-grid {
 
 .k-grid {
     height: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+
+    thead {
+        tr {
+            th {
+                border-bottom: 1px solid $green;
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            td {
+                border-bottom: 1px solid $border-color;
+            }
+
+            &:last-child {
+                td {
+                    border-bottom: unset;
+                }
+            }
+        }
+    }
 }

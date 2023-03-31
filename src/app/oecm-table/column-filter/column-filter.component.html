@@ -1,0 +1,25 @@
+<ng-container [ngSwitch]="column.type">
+    <select *ngSwitchCase="columnTypes.select" [(ngModel)]="filterValue" (ngModelChange)="filterToValue($event)">
+        <option value="">Összes</option>
+        <option *ngFor="let opt of selectOptions" [value]="opt">{{opt}}</option>
+    </select>
+
+    <div class="bool-filter-container" *ngSwitchCase="columnTypes.bool">
+        <div class="d-flex align-center">
+            <input type="radio" id="all" name="boolean" value="" [(ngModel)]="filterValue" (change)="filterToValue('')">
+            <label for="all">Összes</label>
+        </div>
+
+          <div class="d-flex align-center">
+            <input type="radio" id="onlytrue" name="boolean" [value]="true" [(ngModel)]="filterValue" (change)="filterToValue(true)">
+            <label for="onlytrue">True</label>
+        </div>
+
+        <div class="d-flex align-center">
+            <input type="radio" id="onlyfalse" name="boolean" [value]="false" [(ngModel)]="filterValue" (change)="filterToValue(false)">
+            <label for="onlyfalse">False</label>
+        </div>
+    </div>
+
+    <input type="text" *ngSwitchDefault [(ngModel)]="filterValue" (ngModelChange)="filterToValue($event)">
+</ng-container>

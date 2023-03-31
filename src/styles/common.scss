@@ -16,3 +16,17 @@ i.icon-box {
 .rotate-180 {
     transform: rotate(180deg);
 }
+
+.text-start {
+    text-align: start;
+}
+.text-center {
+    text-align: center;
+}
+.text-end {
+    text-align: end;
+}
+
+.width-fill {
+    width: -webkit-fill-available;
+}

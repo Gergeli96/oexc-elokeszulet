@@ -1,0 +1,29 @@
+<app-modal-scaffold [type]="modalType" [size]="modalSize" (onClose)="close()">
+    <div header class="d-flex align-center">
+        <h3 class="ml-2">Felhasználói szerep adatlap</h3>
+    </div>
+    
+    <div body class="d-grid g-gap-4 p-4">
+        <div class="col-2">
+            <div class="d-flex column tab-names-container">
+                <button class="green text-start mb-2" [name]="tabNames.basedata" (click)="setActiveTab(tabNames.basedata)">Alapadatok</button>
+                <button class="green text-start mb-2" [name]="tabNames.properties" (click)="setActiveTab(tabNames.properties)" disabled>Tulajdonságok</button>
+                <button class="green text-start mb-2" [name]="tabNames.inheritedRoles" (click)="setActiveTab(tabNames.inheritedRoles)">Örökölt szerepek</button>
+                <button class="green text-start mb-2" [name]="tabNames.allowedFunctions" (click)="setActiveTab(tabNames.allowedFunctions)" disabled>Engedélyezett funkciók</button>
+                <button class="green text-start mb-2" [name]="tabNames.uiRules" (click)="setActiveTab(tabNames.uiRules)" disabled>UI elem megkötések</button>
+                <button class="green text-start mb-2" [name]="tabNames.specialRoles" (click)="setActiveTab(tabNames.specialRoles)" disabled>Speciális jogosultságok</button>
+                <button class="green text-start mb-2" [name]="tabNames.systemSettings" (click)="setActiveTab(tabNames.systemSettings)" disabled>Rendszerbeállítások</button>
+            </div>
+       </div>
+
+       <div class="col-10" [ngSwitch]="activeTab">
+            <app-user-base-data-form *ngSwitchCase="tabNames.basedata" [modalCloseCallback]="close"></app-user-base-data-form>
+            <app-user-inherited-roles-table *ngSwitchCase="tabNames.inheritedRoles"></app-user-inherited-roles-table>
+       </div>
+    </div>
+
+    <!-- <div class="d-flex justify-end" footer>
+        <button class="green mr-2" (click)="save()">Mentés</button>
+        <button class="green hollow" (click)="close()">Mégsem</button>
+    </div> -->
+</app-modal-scaffold>

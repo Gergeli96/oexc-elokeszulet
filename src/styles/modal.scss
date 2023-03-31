@@ -1,0 +1,36 @@
+#modal-anchor {
+    // justify-content: center;
+    // align-items: center;
+    // position: fixed;
+    display: none;
+    // height: 100vh;
+    // width: 100vw;
+    // left: 0;
+    // top: 0;
+    
+    &:has(*) {
+        display: block;
+    }
+
+    .modal-container {
+        background-color: #00000040;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        display: flex;
+        height: 100vh;
+        width: 100vw;
+        left: 0;
+        top: 0;
+    
+        app-modal-scaffold {
+            overflow: hidden;
+            display: block;
+
+            .modal[size="fill"] {
+                height: 85vh;
+                width: 90vw;
+            }
+        }
+    }
+}

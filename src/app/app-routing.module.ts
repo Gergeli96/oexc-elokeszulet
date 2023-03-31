@@ -2,8 +2,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { IrszamJellegEditFormComponent } from './irszam-jelleg-edit-form/irszam-jelleg-edit-form.component';
-import { IrszamJellegFormComponent } from './oecm-forms/irszam-jelleg-form/irszam-jelleg-form.component';
 import { IrszamJellegTableComponent } from './irszam-jelleg-table/irszam-jelleg-table.component';
+import { UserRolesTableComponent } from './user-roles-table/user-roles-table.component';
 
 
 const routes: Routes = [
@@ -20,6 +20,10 @@ const routes: Routes = [
         path: 'editirszam/:id',
         component: IrszamJellegEditFormComponent,
         data: {edit: true}
+    },
+    {
+        path: 'userrolestable',
+        component: UserRolesTableComponent
     }
 ]
 

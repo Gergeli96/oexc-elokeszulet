@@ -1,7 +1,9 @@
-
-
 .d-flex {
     display: flex;
+
+    &.column {
+        flex-direction: column;
+    }
 
     &.justify-start {
         justify-content: start;

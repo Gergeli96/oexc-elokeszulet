@@ -1,8 +1,9 @@
 @import './variables.scss';
 
-input {
+input, select, textarea {
     border: 1px solid $border-color;
     border-radius: $border-radius;
+    width: -webkit-fill-available;
     padding: $input-padding;
     height: $input-height;
 
@@ -16,6 +17,22 @@ input {
         outline: 1px solid $green;
         border-color: #fff;
     }
+
+    &[type="checkbox"] {
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+
+    &[type="radio"] {
+        height: unset;
+        width: unset;
+    }
+}
+
+select {
+    padding-bottom: 0.65rem;
+    padding-top: 0.65rem;
+    height: unset;
 }
 
 i.input-right {
@@ -27,4 +44,27 @@ i.input-right {
     height: $input-height;
     border-right: unset;
     color: $green;
+}
+
+.label-container {
+    align-items: center;
+    display: flex;
+}
+
+.control-error-container {
+    flex-direction: column;
+    display: flex;
+
+    p {
+        padding-top: 0.5rem;
+        padding-left: 1rem;
+        font-weight: 200;
+        margin: unset;
+        color: $red;
+
+        &::before {
+            padding-right: 0.5rem;
+            content: '-';
+        }
+    }
 }

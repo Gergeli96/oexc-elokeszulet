@@ -1,0 +1,21 @@
+<div class="user-role-input-container">
+    <div class="input-container d-flex">
+        <input type="text" [(ngModel)]="value" (ngModelChange)="onInput($event)">
+        <button (click)="toggle()"></button>
+    </div>
+    
+    <div class="dropdown-container" #ddc>
+        <app-oecm-table tableid="userRoleInputTable"
+            [columns]="columns"
+            [data]="data"
+            [hideheader]="true"
+            [hidepager]="true"
+            [tableheight]="300"
+            (doubleclick)="selectRow($event)"
+        ></app-oecm-table>
+    </div>
+</div>
+
+<div class="control-error-container">
+    <p *ngFor="let errorMessage of formControl.errors | controlErrorsIter : touched">{{errorMessage}}</p>
+</div>

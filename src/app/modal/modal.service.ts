@@ -12,32 +12,26 @@ export class ModalService {
         private _injector: Injector
     ) { }
 
-    public open<T>(component: any, initData?: T): void {
-        const element = document.querySelector('#modal-anchor') as HTMLDivElement
-        const componentRef = this._resolver.resolveComponentFactory(component).create(this._injector)
-        this._appRef.attachView(componentRef.hostView)
-        const componentInstance = componentRef.instance as ModalBase<T>
-
-        componentInstance.close = () => componentRef.destroy()
-        componentInstance?.init(initData)
-        
-        element.appendChild(
-            (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement
-        )
+    public open<T>(component: any, initData?: T): Promise<void> {
+        return new Promise((resolve) => {
+            const element = document.querySelector('#modal-anchor') as HTMLDivElement
+            const componentRef = this._resolver.resolveComponentFactory(component).create(this._injector)
+            this._appRef.attachView(componentRef.hostView)
+            const componentInstance = componentRef.instance as ModalBase<T>
+            
+            const modalContainer = document.createElement('div')
+            modalContainer.classList.add('modal-container')
+            
+            componentInstance.close = () => {
+                componentRef.destroy()
+                modalContainer.remove()
+                resolve()
+            }
+            componentInstance?.init(initData)
+            
+            element.appendChild(modalContainer).appendChild(
+                (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement
+            )
+        })
     }
-
-
-    // constructor(
-    //     private viewContainerRef: ViewContainerRef
-    // ) { }
-
-    // public open<T>(component: any, initData?: T): void {
-    //     const element = document.querySelector('#modal-anchor') as HTMLDivElement
-    //     const componentRef = this.viewContainerRef.createComponent<ModalBase>(component)
-    //     componentRef.instance.close = () => componentRef.destroy()
-
-    //     element.appendChild(
-    //         (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement
-    //     )
-    // }
 }

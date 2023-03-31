@@ -1,0 +1,5 @@
+<input #inp [type]="type" [(ngModel)]="value" (ngModelChange)="onModelValueChange($event)">
+
+<div class="control-error-container">
+    <p *ngFor="let errorMessage of formControl.errors | controlErrorsIter : touched">{{errorMessage}}</p>
+</div>

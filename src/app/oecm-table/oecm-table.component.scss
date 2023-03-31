@@ -1,6 +1,8 @@
 @import '../../styles/variables.scss';
 
 .kendo-table-container {
+    height: 100%;
+    
     .table-header, .table-footer {
         justify-content: space-between;
         align-items: center;
@@ -17,6 +19,17 @@
 
         .actions {
             display: flex;
+
+            button {
+                border: 1px solid $border-color;
+                background-color: #fff;
+                padding: 0.5rem 0.75rem;
+                margin-right: 0.5rem;
+
+                svg path {
+                    stroke: $green;
+                }
+            }
 
             .icon-container {
                 border: 1px solid $border-color;
@@ -110,60 +123,27 @@
     }
 }
 
-.settings-modal-container {
+.loading-container {
+    background-color: #0000003f;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.25);
     align-items: center;
-    position: fixed;
     display: flex;
-    height: 100vh;
-    width: 100vw;
-    left: 0;
-    top: 0;
-   
-    .settings-modal {
-        .setting-modal-header {
-            border-bottom: 1px solid #cdc;
-            background-color: #fff;
-            padding: 0.5rem 1rem;
-        }
+    height: 100%;
+    width: 100%;
 
-        .settings-modal-body {
-            border: 1px solid #cdc;
-            background-color: #fff;
-            padding: 1rem;
-            width: 25rem;
-            
-            .setting-input-container {
-                justify-content: space-between;
-                padding-bottom: 0.25rem;
-                display: flex;
-                
-                label {
-                    font-weight: bolder;
-                }
-                
-                input[type="number"] {
-                    text-align: end;
-                    width: 3rem;
-                }
-            }
-        }
+    .loader-icon {
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+        font-size: 3rem;
+    }
+}
 
-        .settings-modal-footer {
-            border-top: 1px solid #cdc;
-            background-color: #fff;
-            padding: 0.5rem 1rem;
-            justify-content: end;
-            display: flex;
-
-            button {
-                margin-right: 0.25rem;
-
-                &:last-child {
-                    margin-right: unset;
-                }
-            }
-        }
-    } 
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

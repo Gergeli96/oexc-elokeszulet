@@ -1,0 +1,33 @@
+.date-input-container {
+    align-items: center;
+    position: relative;
+    width: max-content;
+    display: flex;
+
+    kendo-datepicker {
+        position: absolute;
+        bottom: -0.25rem;
+        border: none;
+        width: 0;
+
+        input.k-input-inner:focus {
+            outline: none;
+        }
+    }
+
+    input {
+        background-image: url('../../../assets/calendar.png');
+        background-position: calc(100% - 0.5rem) center;
+        background-size: 1.2rem 1.2rem;
+        background-repeat: no-repeat;
+        padding-right: 2rem;
+        width: 5rem;
+    }
+
+    button {
+        background-color: #1110;
+        padding: 1.2rem 1.2rem;
+        position: absolute;
+        right: 0;
+    }
+}

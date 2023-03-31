@@ -1,0 +1,35 @@
+<app-modal-scaffold headertitle="Örökölt szerep adatlap" [type]="modalType" (onClose)="close()">
+    <div body class="p-4" [formGroup]="form">
+        <div class="d-grid g-gap-2 mb-4">
+            <div class="col-3 label-container">
+                <label>Felhasználói szerep</label>
+            </div>
+            <div class="col-9">
+                <app-user-role-input formControlName="userrole"></app-user-role-input>
+            </div>
+        </div>
+
+        <div class="d-grid g-gap-2 mb-4">
+            <div class="col-3 label-container">
+                <label>Érvényesség kezdete</label>
+            </div>
+            <div class="col-9">
+                <app-oecm-date-input formControlName="from"></app-oecm-date-input>
+            </div>
+        </div>
+
+        <div class="d-grid g-gap-2">
+            <div class="col-3 label-container">
+                <label>Érvényesség vége</label>
+            </div>
+            <div class="col-9">
+                <app-oecm-date-input formControlName="to"></app-oecm-date-input>
+            </div>
+        </div>
+    </div>
+
+    <div class="button-container end" footer>
+        <button class="green" (click)="save()">Mentés</button>
+        <button class="green hollow" (click)="close()">Mégsem</button>
+    </div>
+</app-modal-scaffold>

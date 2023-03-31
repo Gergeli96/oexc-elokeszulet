@@ -14,6 +14,69 @@ button {
     &.green {
         background-color: $green;
         color: $white;
+
+        svg path {
+            stroke: $white;
+            fill: $white;
+        }
+
+        &.hollow {
+            border: 1px solid $green;
+            background-color: $white;
+            color: $green;
+
+            svg path {
+                stroke: $green;
+                fill: $green;
+            }
+        }
+    }
+
+    &.orange {
+        background-color: $orange;
+        color: $white;
+
+        svg path {
+            stroke: $white;
+            fill: $white;
+        }
+
+        &.hollow {
+            border: 1px solid $orange;
+            background-color: $white;
+            color: $orange;
+
+            svg path {
+                stroke: $orange;
+                fill: $orange;
+            }
+        }
+    }
+
+    &.grey {
+        background-color: $grey;
+        color: $white;
+
+        svg path {
+            stroke: $white;
+            fill: $white;
+        }
+
+        &.hollow {
+            background-color: $white;
+            border: 1px solid $grey;
+            color: $grey;
+
+            svg path {
+                stroke: $grey;
+                fill: $grey;
+            }
+        }
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
     }
 }
 
@@ -23,11 +86,15 @@ button {
     padding: 0.75rem;
     display: flex;
 
-     button {
+    button {
         margin-right: 0.5rem;
 
         &:last-child {
             margin-right: unset;
         }
-     }
+    }
+
+    &.end {
+        justify-content: end;
+    }
 }

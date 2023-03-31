@@ -1,0 +1,7 @@
+<select [(ngModel)]="value" (ngModelChange)="onSelect($event)">
+    <ng-content></ng-content>
+</select>
+
+<div class="control-error-container">
+    <p *ngFor="let errorMessage of formControl.errors | controlErrorsIter : touched">{{errorMessage}}</p>
+</div>

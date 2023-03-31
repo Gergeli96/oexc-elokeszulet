@@ -1,1 +1,19 @@
-<p>oecm-form works!</p>
+<form [formGroup]="this">
+    <div class="d-grid mb-4" *ngFor="let control of controls | formGroupIter">
+        <div class="col-3">
+            <label>{{control.label}}</label>
+        </div>
+
+        <div class="col-9">
+            <ng-container [ngSwitch]="control.type">
+                <app-oecm-date-input *ngSwitchCase="controlTypes.date" [formControlName]="control.name"></app-oecm-date-input>
+            
+                <app-oecm-select *ngSwitchCase="controlTypes.select" [formControlName]="control.name">
+                    <option *ngFor="let opt of control.options" [value]="opt.value">{{opt.name}}</option>
+                </app-oecm-select>
+
+                <oecm-input *ngSwitchDefault [formControlName]="control.name" [type]="control.typename"></oecm-input>
+            </ng-container>
+        </div>
+    </div>
+</form>

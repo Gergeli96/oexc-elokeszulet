@@ -1,0 +1,15 @@
+<app-oecm-table tableid="teszttable" tablename="Postahelyek listája" [columns]="columns" disableheightcalculate="modal">
+    <div class="d-flex">
+        <div class="button-container width-fill mr-2">
+            <button class="green" (click)="openModal()">Felvétel</button>
+            <button class="green">Tulajdonságok</button>
+            <button class="green">Törlés</button>
+            <button class="green">Megjelenítés</button>
+        </div>
+
+        <div class="button-container">
+            <button class="green">Mentés</button>
+            <button class="green hollow">Mégsem</button>
+        </div>
+    </div>
+</app-oecm-table>

@@ -30,11 +30,11 @@ export class IrszamJellegEditFormComponent implements OnInit {
     }
 
     public save(): void {
-        if (this.editMode) {
-            this.dataService.edit(this.id, this.form.formGroup.value)
-        }
-        else {
-            this.dataService.add(this.form.formGroup.value)
-        }
+        // if (this.editMode) {
+        //     this.dataService.edit(this.id, this.form.formGroup.value)
+        // }
+        // else {
+        //     this.dataService.add(this.form.formGroup.value)
+        // }
     }
 }

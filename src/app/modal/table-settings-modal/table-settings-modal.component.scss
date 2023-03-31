@@ -1,0 +1,12 @@
+@import '../../../styles/variables.scss';
+
+.pagesize-container {
+    span {
+        white-space: nowrap;
+        color: $grey-text;
+    }
+
+    input {
+        width: 3rem;
+    }
+}

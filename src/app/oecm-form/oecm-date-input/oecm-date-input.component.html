@@ -1,0 +1,9 @@
+<div class="date-input-container">
+    <kendo-datepicker #datepicker calendarType="classic" [(ngModel)]="kendoDatePickerValue" (ngModelChange)="onDatePick($event)"></kendo-datepicker>
+    <input type="text" [(ngModel)]="modelValue" (ngModelChange)="onInput($event)">
+    <button (click)="datepicker.toggle()"></button>
+</div>
+
+<div class="control-error-container">
+    <p *ngFor="let errorMessage of formControl.errors | controlErrorsIter : touched">{{errorMessage}}</p>
+</div>

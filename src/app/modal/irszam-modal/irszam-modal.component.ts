@@ -36,13 +36,13 @@ export class IrszamModalComponent extends ModalBase<IIrszamModalInitData> {
 
 
 	public save(): void {
-		if (this.editMode) {
-			this.dataService.edit(this.editData.id, this.formComponent.formGroup.value)
-		}
-		else {
-			this.dataService.add(this.formComponent.formGroup.value)
-		}
-		this.initValue?.callback()
-		this.close()
+		// if (this.editMode) {
+		// 	this.dataService.edit(this.editData.id, this.formComponent.formGroup.value)
+		// }
+		// else {
+		// 	this.dataService.add(this.formComponent.formGroup.value)
+		// }
+		// this.initValue?.callback()
+		// this.close()
 	}
 }

@@ -12,15 +12,58 @@ nav {
     .nav-left {
         display: flex;
 
-        .link {
+        .link-group {
             justify-content: center;
             text-decoration: none;
             align-items: center;
+            position: relative;
             padding: 0 1rem;
             cursor: pointer;
             height: inherit;
             display: flex;
             color: $white;
+
+            ul.group-dropdown {
+                border: 1px solid $border-color;
+                background-color: $white;
+                border-radius: 0.25rem;
+                flex-direction: column;
+                position: absolute;
+                list-style: none;
+                display: none;
+                top: 3.1rem;
+                padding: 0;
+                z-index: 9;
+                left: 0;
+
+                li.link {
+                    padding: 0.5rem 1rem;
+                    white-space: nowrap;
+                    text-align: start;
+                    color: #000;
+
+                    &::before {
+                        content: "\2022";
+                        color: $grey;
+                    }
+
+                    &:hover {
+                        color: $green;
+    
+                        &::before {
+                            color: $red;
+                        }
+                    }
+                }
+            }
+
+            &:hover {
+                background-color: $dark-green;
+
+                ul.group-dropdown {
+                    display: flex;
+                }
+            }
         }
     }
 

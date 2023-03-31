@@ -1,6 +1,7 @@
 import { GridDataResult } from "@progress/kendo-angular-grid";
 
 export class OecmGridData<T = any> {
+    public gridViewData: T[] = [ ]
     public gridData: GridDataResult = {
         data: [ ],
         total: 0
@@ -12,6 +13,7 @@ export class OecmGridData<T = any> {
     constructor(private pageSize: number) { }
 
     public setData(data: T[]): void {
+        this.gridViewData = data
         this.pageCount = Math.ceil(data.length / this.pageSize)
         this.originalData = data
         this.toFirstPage()
@@ -36,6 +38,12 @@ export class OecmGridData<T = any> {
 
     public toLastPage(): void {
         this.currentPage = this.pageCount
+        this.setGridData()
+    }
+
+    public setPageSize(pageSize: number): void {
+        this.pageSize = pageSize
+        this.pageCount = Math.ceil(this.originalData.length / this.pageSize)
         this.setGridData()
     }
 

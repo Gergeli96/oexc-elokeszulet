@@ -1,51 +1,77 @@
+@import '../../../styles/variables.scss';
+
 .modal {
     background-color: #fff;
     padding: 0.25rem;
-    min-width: 25rem;
+    width: 45rem;
 
     .modal-header {
         justify-content: space-between;
         align-items: center;
-        padding: 0.25rem;
+        padding: 1rem;
         display: flex;
 
         .title {
-            font-size: 1.3rem;
-            color: #8f8f8f;
+            display: flex;
         }
 
         .actions {
             align-items: center;
             display: flex;
             
-            i {
-                margin-right: 0.25rem;
-                font-size: 1.3rem;
-                color: #2fb351;
-
-                &:last-child {
-                    margin-right: unset;
-                }
-
-                &.bi-info-circle-fill {
-                    cursor: help;
-                }
-
-                &.bi-x-circle-fill {
-                    cursor: pointer;
-                }
+            button {
+                background-color: #f8f8f8;
             }
         }
     }
 
     .modal-body {
-        background-color: #eee;
-        padding: 0.25rem;
+        padding: 0.1rem;
     }
 
     .modal-footer {
-        background-color: #d4d4d4;
-        padding: 0.25rem;
-        margin-top: 1rem;
+        &:has(*) {
+            padding: 1rem;
+        }
+    }
+
+    &[type="warning"] {
+        .modal-header {
+            .title {
+                color: $orange;
+            }
+
+            .actions {
+                button {
+                    height: $input-height;
+                    width: $input-height;
+                    padding: unset;
+
+                    svg path {
+                        fill: $orange;
+                    }
+                }
+            }
+        }
+    }
+
+    &[type="success"] {
+        .modal-header {
+            .title {
+                color: $green;
+            }
+
+            .actions {
+                button {
+                    height: $input-height;
+                    width: $input-height;
+                    padding: unset;
+
+                    svg path {
+                        fill: $green;
+                    }
+                }
+            }
+        }
     }
 }

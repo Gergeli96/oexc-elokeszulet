@@ -1,16 +1,14 @@
 <nav>
     <div class="nav-left">
-        <div *ngFor="let link of links" class="link">
-            {{link.name}}
-        </div>
-        <!-- <div class="link-group">
-            <div class="group-name" (click)="toggleSubLinks(sublinks)">Irányítószám</div>
+        <div class="link-group" *ngFor="let link of links" #element>
+            <div class="group-name">{{link.name}}</div>
 
-            <div class="sub-links" #sublinks>
-                <div class="link" routerLink="/" (click)="close(sublinks)">Irányítószám jelleg táblázat</div>
-                <div class="link" routerLink="/createirszam" (click)="close(sublinks)">Irányítószám jelleg létrehozás</div>
-            </div>
-        </div> -->
+            <ul class="group-dropdown">
+                <li class="link" *ngFor="let sublink of link.links" (click)="navigate(sublink)">
+                    {{sublink.name}}
+                </li>
+            </ul>
+        </div>
     </div>
 
     <div class="nav-right">

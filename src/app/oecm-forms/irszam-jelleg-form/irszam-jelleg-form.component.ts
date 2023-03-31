@@ -1,6 +1,7 @@
-import { OecmFormGroup } from 'src/app/helpers/OecmFormGroup';
+import { IOecmFormControl, OecmFormComponent } from 'src/app/oecm-form/oecm-form.component';
+import { Component, Input, ViewChild } from '@angular/core';
+import { required } from 'src/app/oecm-form/validators';
 import { ITestData } from 'src/app/types/data-types';
-import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'app-irszam-jelleg-form',
@@ -8,23 +9,19 @@ import { Component, Input } from '@angular/core';
     styleUrls: ['./irszam-jelleg-form.component.scss']
 })
 export class IrszamJellegFormComponent {
-    public formGroup = new OecmFormGroup<ITestData>([
-        {name: 'code'},
-        {name: 'name'},
-        {name: 'validity', type: 'bool'}
-    ])
-
-    constructor() { }
-
+    @ViewChild(OecmFormComponent, {static: true}) form: OecmFormComponent<ITestData>
+    public controls: IOecmFormControl<ITestData>[] = [
+        {label: 'Név', name: 'name', validators: [required]},
+        {label: 'Település', name: 'settlement'},
+        {label: 'Irszám', name: 'zipcode'}
+    ]
     
     @Input('data')
     public set editData(value: ITestData | null) {
-        if (value) {
-            this.formGroup.setValue(value)
-        }
+        if (value) this.form.setValue(value)
     }
 
-    public save(): void {
-        console.log(this.formGroup.value)
+    public log(): void {
+        console.log(this.form.value)
     }
 }

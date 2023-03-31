@@ -1,0 +1,8 @@
+@import '../../../styles/variables.scss';
+
+.bool-filter-container {
+    border: 1px solid $border-color;
+    background-color: $white;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+}
